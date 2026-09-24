@@ -1,0 +1,141 @@
+:root
+{
+    --background: #cbcbcb;
+    --accent: #ffd24a;
+    --text: #1a1a1a;
+}
+
+
+*
+{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    text-decoration: none;
+
+    /* default text color:*/
+    color: var(--text);
+}
+
+body
+{
+    background-color: #cecece
+}
+
+.header 
+{
+    padding: 10px 50px 10px 50px;
+    background-color: #e3e3e3;
+    max-height: 50px;
+
+    box-shadow: 1px 1px 23px;
+}
+
+.left-side
+{
+    display: flex;
+    gap: 10px;
+}
+
+.left-side h1
+{
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.logo-container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid black;
+}
+
+.logo
+{
+    height: 35px;
+    max-height: 40px;
+    width: 35px;    
+}
+
+main
+{
+    margin: 40px 20px 20px 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-left: 3px dotted white;
+}
+
+.section_title h2
+{
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    text-decoration: underline 1px solid black;
+    margin-bottom: 20px;
+}
+
+.shoppingList_section
+{
+    display: flex;
+    gap: 10px;
+    
+}
+
+.section_container
+{
+    flex: 1;
+    border: 1px solid rgb(126, 126, 126);
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(231, 231, 231);
+    box-shadow: 1px 0 30px rgb(134, 134, 134);
+}
+
+.shoppingList_product
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.product_container
+{
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(217, 217, 217);
+}
+
+.product_leftside
+{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.product_rightside
+{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 10px;
+    border-left: 1px solid gray;
+}
+
+.product_button
+{
+    width: 30px;
+    height: 30px;
+    background: rgb(183, 183, 183);
+    
+    border: none;
+    border-radius: 2px;
+}
+
+.product_button:hover
+{
+    background-color: rgb(165, 165, 165);
+}

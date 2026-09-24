@@ -4,24 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="styles.css">
+
     <title>Przypomnienie programowania</title>
 </head>
 
 <body>
     <div id="app">
-        <header>
-            <div id="left-side">
-                <img src="https://cdn-icons-png.flaticon.com/512/3081/3081972.png" alt="Logo" id="logo">
-                <h1>Zdrowe & smacznie</h1>
+        <header class="header">
+            <div class="left-side">
+                <div class="logo-container">
+                    <img class="logo" src="https://cdn-icons-png.flaticon.com/512/3081/3081972.png" alt="Logo" id="logo">
+                </div>
+                <h1>SmaczneŻarcie</h1>
             </div>
         </header>
         <main>
-            <h2>Dodaj produkty do listy zakupowej:</h2>
-            <form action="" id="shoppingList" class="form">
-                <label>Wpisz nazwę produktu:</label>
-                <input type="text" class="shoppingInput">
-                <button class="shoppingSubmit" onClick="submit">dodaj</button>
-            </form>
+            <section class="shoppingList_section section_title">
+                <div class="shoppingList_leftside section_container">
+                    <h2 class="shoppingList_title">Dodaj do listy</h2>
+                    <p>Dodaj produkty do listy zakupowej:</p>
+                    <form class="shoppingList_form">
+                        <label>Wpisz nazwę produktu:</label>
+                        <input type="text" class="shoppingList_input">
+                        <button class="shoppingList_submit">dodaj</button>
+                    </form>
+                </div>
+                <div class="shoppingList_rightside section_container">
+                    <h2 class="shoppingList_title">Lista zakupów</h2>
+                    <ul class="shoppingList_list">
+                        <template id="product-template">
+                            <li class="shoppingList_product product_container">
+                                <div class="product_leftside">
+                                    <img src="https://placehold.co/50x50">
+                                    <p>product_name</p>
+                                    <p>products quantity</p>
+                                </div>
+                                <div class="product_rightside">
+                                    <button class="product_button">O</button>
+                                    <button class="product_button">X</button>
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </section>
         </main>
     </div>
     <script src="script.js"></script>
