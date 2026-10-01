@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link rel="stylesheet" href="styles.css">
 
     <title>Przypomnienie programowania</title>
@@ -15,39 +15,66 @@
         <header class="header">
             <div class="left-side">
                 <div class="logo-container">
-                    <img class="logo" src="https://cdn-icons-png.flaticon.com/512/3081/3081972.png" alt="Logo" id="logo">
+                    <img class="logo" src="https://cdn-icons-png.flaticon.com/512/3081/3081972.png" alt="Logo"
+                        id="logo">
                 </div>
                 <h1>SmaczneŻarcie</h1>
             </div>
         </header>
         <main>
-            <section class="shoppingList_section section_title">
-                <div class="shoppingList_leftside section_container">
-                    <h2 class="shoppingList_title">Dodaj do listy</h2>
-                    <p>Dodaj produkty do listy zakupowej:</p>
-                    <form class="shoppingList_form">
-                        <label>Wpisz nazwę produktu:</label>
-                        <input type="text" class="shoppingList_input">
-                        <button class="shoppingList_submit">dodaj</button>
-                    </form>
-                </div>
-                <div class="shoppingList_rightside section_container">
-                    <h2 class="shoppingList_title">Lista zakupów</h2>
-                    <ul class="shoppingList_list">
-                        <template id="product-template">
-                            <li class="shoppingList_product product_container">
-                                <div class="product_leftside">
-                                    <img src="https://placehold.co/50x50">
-                                    <p>product_name</p>
-                                    <p>products quantity</p>
-                                </div>
-                                <div class="product_rightside">
-                                    <button class="product_button">O</button>
-                                    <button class="product_button">X</button>
-                                </div>
+            <section class="ingredients" aria-labelledby="ingredients-title">
+                <h2 id="ingredients-title" class="ingredients__title">Składniki</h2>
+
+                <form class="ingredients__form ingredients-form" id="ingredients-form">
+                    <div class="ingredients-form__field">
+                        <label for="ingredient-name" class="ingredients-form__label">Nazwa składnika:</label>
+                        <input type="text" name="name" id="ingredient-name" class="ingredient-form__input" required>
+                    </div>
+
+                    <div class="ingredients-form__field">
+                        <label for="ingredient-amount" class="ingredients-form__label">ilość:</label>
+                        <input type="number" name="amount" id="ingredient-amount" class="ingredient-form__input" min="0"
+                            step="any" required>
+                    </div>
+
+                    <div class="ingredients-form__field">
+                        <label for="ingredient-unit" class="ingredients-form__label">Miara:</label>
+                        <select id="ingredient-unit" name="unit" class="ingredients-form_select" required>
+                            <option value="">Wybierz miarę</option>
+                            <option value="ml">Ml</option>
+                            <option value="g">Gram</option>
+                            <option value="szt">sztuk</option>
+                            <option value="tbsp">Łyżki</option>
+                        </select>
+                    </div>
+
+                    <div class="ingredients-form__field">
+                        <label for="ingredient-type" class="ingredients-form__label">typ produktu:</label>
+                        <select id="ingredient-type" name="type" class="ingredients-form_select" required>
+                            <option value="">rodzaj produktu</option>
+                            <option value="fluid">Płynne</option>
+                            <option value="dry">Suchy</option>
+                            <option value="fats">Tłuszcz</option>
+                        </select>
+                    </div>
+
+                    <button class="ingredients-form__submit" type="submit">Dodaj</button>
+                </form>
+
+                <div class="ingredients__summary ingredients-list" aria-labelledby="ingredients-list-title"
+                    id="ingredients__summary">
+                    <h3 class="ingredients-list__subtitle" id="ingredients-list-title">Lista składników:</h3>
+                    <ol class="ingredients-list__items" id="ingredients-list">
+                        <template id="ingredients-list-item">
+                            <li class="ingredients__list-item">
+                                <span class="ingredients__list-item-name" id="ingredients-list-item-name"></span>
+                                <span class="ingredients__list-item-amount" id="ingredients-list-item-amount"></span>
+                                <span class="ingredients__list-item-unit" id="ingredients-list-item-unit"></span>
+
+                                <button onClick="removeIngredient">remove</button>
                             </li>
                         </template>
-                    </ul>
+                    </ol>
                 </div>
             </section>
         </main>
