@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Klienci</title>
+  </head>
+  <body>
+    <h1>PANEL OBSŁUGI KLIENTÓW</h1>
+    <div class="panel">
+        <form class="panel__form add-client" id="add-client" method="post" role="add-client">
+            <fieldset class="add-client__group">
+                <legend class="add-client__legend">Podstawowe dane:</legend>
+                <label class="add-client__label" for="client-name">Imię klienta:</label>
+                <input class="add-client__input" id="client-name" type="text" name="name" placeholder="imię" />
+
+                <label class="add-client__label" for="client-surname">nazwisko klienta:</label>
+                <input class="add-client__input" id="client-surname" type="text" name="surname" placeholder="nazwisko"/>
+
+                <label class="add-client__label" for="client-age">Wiek klienta:</label>
+                <input class="add-client__input" id="client-age" type="number" name="age" placeholder="wiek" />
+            </fieldset>
+
+            <fieldset class="add-client__group add-client__group--contact">
+                <legend class="add-client__legend">Dane kontaktowe:</legend>
+                <label class="add-client__label" for="client-email">Adres email klienta:</label>
+                <input class="add-client__input" id="client-email" type="text" name="email" placeholder="email" />
+
+                <label class="add-client__label" for="client-phone">telefon klienta:</label>
+                <input class="add-client__input" id="client-phone" type="text" name="phone" placeholder="telefon"/>
+            </fieldset>
+            <button type="submit">Zapisz dane</button>
+        </form>
+    </div>
+
+    <div class="panel cliet-list">
+        <ol class="client-list__list">
+
+        </ol>
+    </div>
+
+    <script src="clients.js"></script>
+  </body>
+</html>
