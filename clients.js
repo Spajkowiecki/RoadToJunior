@@ -10,11 +10,13 @@ function getDataFromForm(clientData) {
   //console.log(clientData);
   const { clientName, clientSurname, clientAge, clientEmail, clientPhone } =
     clientData;
-  console.log("ClientName: ", validateData(clientName, { onlyText: true }));
+  console.log("ClientName: ", validateTextData(clientName, { onlyText: true }));
   console.log(
     "ClientSurname: ",
-    validateData(clientSurname, { onlyText: true, canHaveSpecial: true }),
+    validateTextData(clientSurname, { onlyText: true, canHaveSpecial: true }),
   );
+  console.log("ClientNumber: ", validatePhoneNumber(clientPhone));
+  console.log("ClientAge: ", validateAge(clientAge, { minAge: 8, maxAge: 60 }));
 }
 
 //7. Sprawdzenie: Czy pole nie jest puste
@@ -38,21 +40,62 @@ const textOptions = {
 };
 
 /**
- * @param {string} number
+ * @param {string} clientAge
  */
-function validatePhoneNumber(number) {
-  if (isFieldEmpty(number)) {
+function validateAge(clientAge, { minAge = 8, maxAge = 60 } = {}) {
+  //usuniecie spacji przed i za liczba
+  const fixedNumber = clientAge.trim();
+
+  //sprawdzenie czy pole nie jest puste
+  if (isFieldEmpty(fixedNumber)) {
     console.log("Pole jest puste: " + fixedNumber);
     return false;
   }
+
+  //sprawdzenie czy liczba nie jest NaN
+  if (Number.isNaN(fixedNumber)) {
+    console.log("To nie jest liczba [NaN]");
+    return false;
+  }
+
+  const toNumber = Number(fixedNumber);
+
+  if (!Number.isInteger(toNumber)) {
+    console.log("To nie jest liczba całkowita");
+    return false;
+  }
+
+  if (!(toNumber >= minAge && toNumber <= maxAge)) {
+    console.log("Wiek jest nieprawidłowy");
+    return false;
+  }
+
+  return true;
+}
+
+/**
+ * @param {string} number
+ */
+function validatePhoneNumber(number) {
   //usuwam z numeru niepotrzebne spacje
   const fixedNumber = number.trim();
-  //teraz usuwam 'spacje' i '-'
+  const regexNumberLength = /^\d{9}$/;
+
+  //sprawdzam czy tekst nie jest pusty
+  if (isFieldEmpty(fixedNumber)) {
+    console.log("Pole jest puste: " + fixedNumber);
+    return false;
+  }
+  //wlasciwe przygotowanie numeru do weryfikacji, usuwam '-' i ' ', zamieiam je na ""
   const parsedNumber = fixedNumber.replace(/[ -]/g, "");
 
-  //TODO: sprawdzic tutaj /^\d{9}$/ ten regex dot. czy numer ma 9 liczb
+  //sprawdzanie czy wprowadzony numer jest liczbą, czy nie zawiera np. 72131234abcd <- liter
 
-  //Czy to liczba ?
+  //TODO: sprawdzic tutaj /^\d{9}$/ ten regex dot. czy numer ma 9 liczb
+  if (!regexNumberLength.test(parsedNumber)) {
+    console.log("Liczba nie zawiera 9 cyfr");
+    return false;
+  }
 
   return true;
 }
@@ -70,7 +113,7 @@ function validateTextData(text, textOptions = {}) {
     return false;
   }
   //przeniosłem if który ma wiecej warunków bo jest mniej ogólnikowy
-  if (options.onlyText && options.canHaveSpecial) {
+  if (textOptions.onlyText && textOptions.canHaveSpecial) {
     if (hasOnlyLetters(trimedText)) {
       console.log("Test na liczby [OK]");
       return true;
@@ -84,7 +127,7 @@ function validateTextData(text, textOptions = {}) {
   }
   //przeniosłem niżej bo wcześniej wyłapywało mi jako pierwszy
   // warunek dot. tekstu przez co blokował drugi warunek ze znakami specjalnymi
-  if (options.onlyText) {
+  if (textOptions.onlyText) {
     if (hasOnlyLetters(trimedText)) {
       console.log("Test na liczby [OK]");
       return true;
