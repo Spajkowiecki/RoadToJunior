@@ -14,7 +14,6 @@ RODZAJE PÓL KTÓRE BĘDĘ CHCIAŁ WALIDOWAĆ PO PRZEZ WPROWADZENIE DANYCH BEZ R
 - LICZBA (wiek, waga, numer budynku, lokum)
 - LICZBA + ZNAK SPECJALNY (zip-code, numer telefonu, numer domu/lokal)
 
-
 */
 //Litery i znaki specjalne
 //Tylko litery
@@ -23,7 +22,7 @@ RODZAJE PÓL KTÓRE BĘDĘ CHCIAŁ WALIDOWAĆ PO PRZEZ WPROWADZENIE DANYCH BEZ R
  * @returns {boolean} returns true if arg: text has only letters,
  *          returns false if arg: text has numbers
  */
-const hasLettersAndSpecials = (text) => /^\p{L}+[- ]?\p{L}+$/.test(text);
+export const hasLettersAndSpecials = (text) => /^\p{L}+[- ]?\p{L}+$/.test(text);
 
 //Tylko litery
 /**
@@ -31,7 +30,7 @@ const hasLettersAndSpecials = (text) => /^\p{L}+[- ]?\p{L}+$/.test(text);
  * @returns {boolean} returns true if arg: text has only letters,
  *          returns false if arg: text has numbers
  */
-const hasOnlyLetters = (text) => /^\p{L}+$/u.test(text);
+export const hasOnlyLetters = (text) => /^\p{L}+$/u.test(text);
 
 //Tylko liczby
 /**
@@ -39,6 +38,12 @@ const hasOnlyLetters = (text) => /^\p{L}+$/u.test(text);
  * @returns {boolean} returns true if arg: number has only numbers,
  *          returns false if arg: number has numbers & text
  */
-const hasOnlyNumbers = (text) => /^\d+$/.test(text);
+export const hasOnlyNumbers = (text) => /^\d+$/.test(text);
 
-//Tekst zawierający znaki specjalne
+//Sprawdzam czy nie jest puste
+//Tylko liczby
+/**
+ * @param {string} text the value should be an string after trim;
+ * @returns {boolean} returns true if the text field is empty, after triming the spaces, false if is there a value
+ */
+export const isEmpty = (text) => text.length === 0;
